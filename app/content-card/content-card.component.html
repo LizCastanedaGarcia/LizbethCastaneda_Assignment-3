@@ -1,0 +1,28 @@
+<span class="body" [innerHtml]="contentList.getContentHTML(0)"></span>
+<span class="body">{{contentList.getContentHTML(1)}}</span>
+<span class="body">{{contentList.getContentHTML(1)}}</span>
+
+<div>
+
+    <h2>Contents with No Type</h2>
+    <ul>
+      <li *ngFor="let item of contentItems | contentTypeFilter">
+        <div class="content-card" [ngStyle]="{'color': 'black', 'background-color': 'lightgrey'}">
+          {{ item.title }}
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+
+  <div *ngFor="let type of contentTypes">
+    <h2>Contents with Type: {{ type }}</h2>
+    <ul>
+      <li *ngFor="let item of contentItems | contentTypeFilter: type">
+        <div class="content-card" [ngStyle]="getStyleForType(type)">
+          {{ item.title }}
+        </div>
+      </li>
+    </ul>
+  </div>
+  
